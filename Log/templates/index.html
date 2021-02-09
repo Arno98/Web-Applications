@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block main %}
+  {% if users %}
+    <form class="delete_form" action="/delete_users" method='POST'>
+      <button class="btn btn-primary" type="submit">DELETE USERS</button>
+    </form>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Delete</th>
+                <th>Id</th>
+                <th>Gender</th>
+                <th>Name</th>
+                <th>Street</th>
+                <th>City/State/Country/Postcode</th>
+                <th>Cordinates</th>
+                <th>Timezone</th>
+                <th>Email</th>
+                <th>Uuid</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Salt</th>
+                <th>Md5</th>
+                <th>Sha1</th>
+                <th>Sha256</th>
+                <th>Dob</th>
+                <th>Registered</th>
+                <th>Phone</th>
+                <th>Cell</th>
+                <th>UIDN</th>
+                <th>Picture</th>
+                <th>Nationality</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+			{% for user in users %}
+                <tr>
+					<td>
+						<form action="/delete_user" method='POST'>
+							<input type="hidden" name="name" value="{{ user['name'] }}">
+							<button class="btn btn-primary" type="submit">Delete user</button>
+						</form>
+					</td>
+                    <td>{{ user["user_id"] }}</td>
+                    <td>{{ user["gender"] }}</td>
+                    <td>{{ user["name"] }}</td>
+                    <td>{{ user["loc_strt"] }}</td>
+                    <td>{{ user["loc_ccsp"] }}</td>
+                    <td>{{ user["loc_cord"] }}</td>
+                    <td>{{ user["loc_tmz"] }}</td>
+                    <td>{{ user["email"] }}</td>
+                    <td>{{ user["log_uuid"] }}</td>
+                    <td>{{ user["log_username"] }}</td>
+                    <td>{{ user["log_password"] }}</td>
+                    <td>{{ user["log_salt"] }}</td>
+                    <td>{{ user["log_md5"] }}</td>
+                    <td>{{ user["log_sha1"] }}</td>
+                    <td>{{ user["log_sha256"] }}</td>
+                    <td>{{ user["dob"] }}</td>
+                    <td>{{ user["registered"] }}</td>
+                    <td>{{ user["phone"] }}</td>
+                    <td>{{ user["cell"] }}</td>
+                    <td>{{ user["user_id_name"] }}</td>
+                    <td>{{ user["picture_thumb"] }}</td>
+                    <td>{{ user["nat"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% elif user %}
+    
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Delete</th>
+                <th>Id</th>
+                <th>Gender</th>
+                <th>Name</th>
+                <th>Street</th>
+                <th>City/State/Country/Postcode</th>
+                <th>Cordinates</th>
+                <th>Timezone</th>
+                <th>Email</th>
+                <th>Uuid</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Salt</th>
+                <th>Md5</th>
+                <th>Sha1</th>
+                <th>Sha256</th>
+                <th>Dob</th>
+                <th>Registered</th>
+                <th>Phone</th>
+                <th>Cell</th>
+                <th>UIDN</th>
+                <th>Picture</th>
+                <th>Nationality</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+			{% for u in user %}
+                <tr>
+					<td>
+						<form action="/delete_user" method='POST'>
+							<input type="hidden" name="name" value="{{ u['name'] }}">
+							<button class="btn btn-primary" type="submit">Delete user</button>
+						</form>
+					</td>
+                    <td>{{ u["user_id"] }}</td>
+                    <td>{{ u["gender"] }}</td>
+                    <td>{{ u["name"] }}</td>
+                    <td>{{ u["loc_strt"] }}</td>
+                    <td>{{ u["loc_ccsp"] }}</td>
+                    <td>{{ u["loc_cord"] }}</td>
+                    <td>{{ u["loc_tmz"] }}</td>
+                    <td>{{ u["email"] }}</td>
+                    <td>{{ u["log_uuid"] }}</td>
+                    <td>{{ u["log_username"] }}</td>
+                    <td>{{ u["log_password"] }}</td>
+                    <td>{{ u["log_salt"] }}</td>
+                    <td>{{ u["log_md5"] }}</td>
+                    <td>{{ u["log_sha1"] }}</td>
+                    <td>{{ u["log_sha256"] }}</td>
+                    <td>{{ u["dob"] }}</td>
+                    <td>{{ u["registered"] }}</td>
+                    <td>{{ u["phone"] }}</td>
+                    <td>{{ u["cell"] }}</td>
+                    <td>{{ u["user_id_name"] }}</td>
+                    <td>{{ u["picture_thumb"] }}</td>
+                    <td>{{ u["nat"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    
+    {% elif error %}
+      <h3 class="error">{{ error }}</h3>
+    {% else %}
+      <div class="no_users_added">
+        <h3>No users added yet</h3>
+        <form action="/create_users" method='POST'>
+          <button class="btn btn-primary" type="submit">CREATE USERS</button>
+        </form>
+      </div>
+    {% endif %}
+{% endblock %}

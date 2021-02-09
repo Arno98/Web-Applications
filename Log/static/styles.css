@@ -1,0 +1,11 @@
+.no_users_added, .error {
+    text-align: center;
+}
+
+.table-responsive {
+    margin-top: 20px;
+}
+
+.delete_form {
+    margin-top: 10px;
+}
